@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>考试结果</title>
+    <style>
+        body {
+            max-width: 800px;
+            min-width: 480px;
+            margin: 0 auto;
+
+        }
+
+        table.imagetable {
+            /*font-family: verdana,arial,sans-serif;*/
+            width: 800px;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+            margin-top: 100px;
+        }
+
+        table.imagetable th {
+            background: #b5cfd2;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
+
+        table.imagetable td {
+            background: white;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+            text-align: center;
+        }
+
+        button {
+            position: relative;
+            top: 50px;
+            width: 120px;
+            height: 30px;
+            border-radius: 12px;
+            border-width: 0;
+            margin-right: 88px;
+            background-color: rgba(22, 155, 213, 1);
+            color: white;
+        }
+        h2{
+            text-align: center;
+            color: red;
+        }
+        .d1{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<table class="imagetable">
+<h2>考试成绩单</h2>
+    <tr>
+        <th>准考证号</th>
+        <th>答对</th>
+        <th>答错</th>
+        <th>漏答</th>
+        <th>分数</th>
+        <th>是否合格</th>
+    </tr>
+    <tr>
+        <td id="t1" th:text="${student.id}"></td>
+        <td id="t2" th:text="${student.correct}"></td>
+        <td id="t3" th:text="${student.error}"></td>
+        <td id="t4" th:text="${student.miss}"></td>
+        <td id="t5" th:text="${student.scores}"></td>
+        <td id="t6" th:text="${student.pass}"></td>
+    </tr>
+
+
+</table><div class="d1">
+    <button class="submit" id="b1">确定</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    $(function () {
+        $("#b1").click(function () {
+            window.location.href="student";
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
