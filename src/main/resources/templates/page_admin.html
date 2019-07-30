@@ -55,6 +55,7 @@
 <body>
 <form action="page_admin" method="post" enctype="multipart/form-data">
     <button class="submit" id="b1">考试题目导入</button>
+    <button id="b2">学员信息注册</button>
     <label for="avatar">Excel</label><input type="file" name="avatar" id="avatar">
 </form>
 <table class="imagetable">
@@ -77,6 +78,10 @@
             if($("#avatar").val() === ""||$("#avatar").val() == null){
                 alert("未选择文件");
             }
+        });
+        $("#b2").click(function () {
+            window.location.href="student";
+            return false;
         });
         $.ajax({
             url: "servlet/Page_adminServlet",

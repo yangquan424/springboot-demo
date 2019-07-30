@@ -1,4 +1,4 @@
-package com.cheer.springbootdemo.controller;
+package com.cheer.springbootdemo.web.controller;
 
 import com.cheer.springbootdemo.service.EmpService;
 import lombok.extern.log4j.Log4j2;

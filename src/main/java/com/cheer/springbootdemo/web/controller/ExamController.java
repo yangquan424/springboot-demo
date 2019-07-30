@@ -1,4 +1,4 @@
-package com.cheer.springbootdemo.controller;
+package com.cheer.springbootdemo.web.controller;
 
 
 import com.cheer.springbootdemo.model.Exam;
@@ -7,6 +7,7 @@ import com.cheer.springbootdemo.model.Users;
 import com.cheer.springbootdemo.service.ExamService;
 import com.cheer.springbootdemo.service.StudentService;
 import com.cheer.springbootdemo.service.UsersService;
+import com.cheer.springbootdemo.utils.StringUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class ExamController {
 
     @GetMapping("/index")
     public String index(){
-        return "/index";
+        return "index";
     }
 
     /**
@@ -38,7 +39,7 @@ public class ExamController {
      */
     @GetMapping("/admin")
     public String admin(){
-        return "/admin";
+        return "admin";
     }
 
     /**
@@ -47,13 +48,14 @@ public class ExamController {
      */
     @GetMapping("/student")
     public String student(){
-        return "/student";
+        return "student";
     }
     @PostMapping("/student")
     public String student(@RequestParam(value = "username") String user, @RequestParam(value = "password") String pass, HttpSession session){
         Student student = this.studentService.getUser(user);
+        String pass1 = StringUtil.encrypt(pass);
         if(student != null){
-            if (user.equals(student.getUsername())&&pass.equals(student.getPassword())){
+            if (user.equals(student.getUsername())&&pass1.equals(student.getPassword())){
                 session.setAttribute("username",user);
                 return "redirect:/student_test";
             }
@@ -62,7 +64,7 @@ public class ExamController {
     }
     @GetMapping("/student_test")
     public String student_test(){
-        return "/student_test";
+        return "student_test";
     }
     @RequestMapping(value = "student_test",method = RequestMethod.POST)
     @ResponseBody
@@ -138,6 +140,6 @@ public class ExamController {
 
     @GetMapping("page_admin")
     public String page_index(){
-        return "/page_admin";
+        return "page_admin";
     }
 }

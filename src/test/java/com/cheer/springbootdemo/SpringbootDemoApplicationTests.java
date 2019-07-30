@@ -1,5 +1,6 @@
 package com.cheer.springbootdemo;
 
+import com.cheer.springbootdemo.utils.StringUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
